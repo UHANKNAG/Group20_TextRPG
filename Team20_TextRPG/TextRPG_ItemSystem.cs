@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Xml.Linq;
 using Team20_TextRPG;
+using static Team20_TextRPG.ItemSystem;
 
 namespace Team20_TextRPG
 {
@@ -26,6 +27,7 @@ namespace Team20_TextRPG
         public abstract class Item
         {
             public Guid Id { get; } = Guid.NewGuid();
+            public string ItemId { get; }
             public string Name { get; }
             public string Description { get; }
             public int Price { get; }
@@ -33,10 +35,12 @@ namespace Team20_TextRPG
 
             public bool IsStoreItem { get; set; } = false;
             public bool Sold { get; set; } = false;
+            public virtual bool IsStackable => false;
 
             #region 아이템 공통 속성
-            public Item(string name, string description, int price, ItemType type)
+            public Item(string itemId, string name, string description, int price, ItemType type)
             {
+                ItemId = itemId;
                 Name = name;
                 Description = description;
                 Price = price;
@@ -54,7 +58,7 @@ namespace Team20_TextRPG
                 string priceTag = mode switch
                 {
                     DisplayMode.Store => Sold ? "판매완료" : $"{Price} G",
-                    DisplayMode.Sell => $"판매가: {(int)(Price * 0.85)} G",
+                    DisplayMode.Sell => $"판매가: {(int)(Price * 0.8)} G",
                     _ => ""
                 };
 
@@ -72,8 +76,8 @@ namespace Team20_TextRPG
             public int Atk { get; }
 
             #region 무기 생성자 선언 및 아이템 생성자 호출 후 고유 속성 초기화
-            public Weapon(string name, int atk, string description, int price)
-                : base(name, description, price, ItemType.Weapon)
+            public Weapon(string itemId, string name, int atk, string description, int price)
+                : base(itemId, name, description, price, ItemType.Weapon)
             {
                 Atk = atk;
             }
@@ -92,7 +96,7 @@ namespace Team20_TextRPG
 
             #region 무기 클론
             public override Item Clone() =>
-                new Weapon(Name, Atk, Description, Price)
+                new Weapon(ItemId, Name, Atk, Description, Price)
                 {
                     IsStoreItem = this.IsStoreItem,
                     Sold = this.Sold
@@ -107,8 +111,8 @@ namespace Team20_TextRPG
             public int Def { get; }
 
             #region 방어구 생성자 선언 및 아이템 생성자 호출 후 고유 속성 초기화
-            public Armor(string name, int def, string description, int price)
-                : base(name, description, price, ItemType.Armor)
+            public Armor(string itemId, string name, int def, string description, int price)
+                : base(itemId, name, description, price, ItemType.Armor)
             {
                 Def = def;
             }
@@ -127,7 +131,7 @@ namespace Team20_TextRPG
 
             #region 방어구 클론
             public override Item Clone() =>
-                new Armor(Name, Def, Description, Price)
+                new Armor(ItemId, Name, Def, Description, Price)
                 {
                     IsStoreItem = this.IsStoreItem,
                     Sold = this.Sold
@@ -139,11 +143,12 @@ namespace Team20_TextRPG
         #region 포션
         public class Potion : Item
         {
+            public override bool IsStackable => true;
             public int HealAmount { get; }
 
             #region 포션 생성자 선언 및 아이템 생성자 호출 후 고유 속성 초기화
-            public Potion(string name, int heal, string description, int price)
-                : base(name, description, price, ItemType.Potion)
+            public Potion(string itemId, string name, int heal, string description, int price)
+                : base(itemId, name, description, price, ItemType.Potion)
             {
                 HealAmount = heal;
             }
@@ -163,7 +168,7 @@ namespace Team20_TextRPG
 
             #region 포션 클론
             public override Item Clone() =>
-                new Potion(Name, HealAmount, Description, Price)
+                new Potion(ItemId, Name, HealAmount, Description, Price)
                 {
                     IsStoreItem = this.IsStoreItem,
                     Sold = this.Sold
