@@ -1,0 +1,75 @@
+{
+  "Name": "\uC784\uC608\uC2AC",
+  "Job": "\uC11C\uBC84 \uAC1C\uBC1C\uC790 \uC9C0\uB9DD\uC0DD",
+  "Level": 1,
+  "Atk": 52,
+  "Def": 20,
+  "Hp": 536,
+  "MaxHp": 630,
+  "Mp": 50,
+  "Gold": 1000,
+  "Exp": 6,
+  "CurrentStg": 2,
+  "EquippedWeaponId": null,
+  "EquippedArmorId": null,
+  "Skills": [
+    {
+      "name": "\uADF8\uAC74 \uD074\uB77C\uC774\uC5B8\uD2B8 \uCABD \uBB38\uC81C\uC5D0\uC694",
+      "description": "1\uBA85\uC758 \uBAAC\uC2A4\uD130\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758 150% ~ 200%\uC758 \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4. \uD574\uB2F9 \uC2A4\uD0AC\uC740 \uD68C\uD53C \uAC00\uB2A5",
+      "minPower": 150,
+      "maxPower": 200,
+      "mpCost": 10,
+      "type": 0,
+      "canDodge": true
+    },
+    {
+      "name": "\uB85C\uCEEC\uC5D0\uC11C\uB294 \uC798 \uB418\uB294\uB370\uC694?",
+      "description": "\uB79C\uB364\uC73C\uB85C 1\uBA85\uC758 \uBAAC\uC2A4\uD130\uC5D0\uAC8C 200%\uC758 \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4. \uD574\uB2F9 \uC2A4\uD0AC\uC740 \uD68C\uD53C \uBD88\uAC00",
+      "minPower": 200,
+      "maxPower": 200,
+      "mpCost": 15,
+      "type": 2,
+      "canDodge": false
+    },
+    {
+      "name": "\uC5B4...?",
+      "description": "\uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758 60 ~ 80% \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4. \uD574\uB2F9 \uC2A4\uD0AC\uC740 \uD68C\uD53C \uBD88\uAC00.",
+      "minPower": 60,
+      "maxPower": 80,
+      "mpCost": 25,
+      "type": 3,
+      "canDodge": false
+    }
+  ],
+  "Inventory": [
+    {
+      "ItemId": "weapon001",
+      "Quantity": 1
+    },
+    {
+      "ItemId": "potion001",
+      "Quantity": 3
+    },
+    {
+      "ItemId": "weapon101",
+      "Quantity": 1
+    }
+  ],
+  "Quests": [
+    {
+      "QuestId": 1,
+      "Progress": 0,
+      "State": 0
+    },
+    {
+      "QuestId": 2,
+      "Progress": 0,
+      "State": 0
+    },
+    {
+      "QuestId": 3,
+      "Progress": 0,
+      "State": 0
+    }
+  ]
+}
